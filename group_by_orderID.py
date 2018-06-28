@@ -4,14 +4,28 @@ import pandas as pd
 
 def GroupByOrderID():
 	df = pd.read_csv("trade_file.csv")
-	print (df.head())
-	print (df.index)
+	print(df.info())
+	#print (df.head())
+	#print (df.index)
 	#df.set_index('symbol')
 	#print (df.columns)
 	#print (df.describe())
-	#grouped = df.groupby("symbol")	
-	#print(grouped.sum())
+	grouped = df.groupby(['orderID'])	
+	print(grouped.sum())
 	return
+
+def GroupByOrderId():
+    #Load from csv
+    df = pd.read_csv("25_Trade_Information_20180626.csv")
+    #Select relevant columns
+    selecteddf = df.loc[:,['CustomerInfo','StockCode','BuySell','TradePrice','TradeSize']]
+    #Add Consideration field
+    #df['Consideration'] = df
+    #Group by fields (show in report)
+    gpdf = selecteddf.groupby(['CustomerInfo','StockCode','BuySell'])
+    print(gpdf.sum())
+    return
+
 
 def GroupByOrderID2():
 	ipl_data = {'orderID': ['a001','a001','a001','a002','a002'],
@@ -25,7 +39,7 @@ def GroupByOrderID2():
  	return
 
 def run():
-	GroupByOrderID2()
+	GroupByOrderId()
 	print("this is the end...")
 if __name__ == '__main__':
 	run()
