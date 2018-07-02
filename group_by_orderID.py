@@ -19,7 +19,7 @@ def GroupByOrderId():
     #Rename
     sumgpdf = agggpdf.rename(columns={'TradePrice':'TradeCount'})
     print(sumgpdf.columns)
-    #Add new field AvgPX
+    #Add new field AvgPX...
     sumgpdf['AvgPx'] = sumgpdf['Consideration'] / sumgpdf['TradeSize']
     print(sumgpdf.columns)
     print("Write to csv")
