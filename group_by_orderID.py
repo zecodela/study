@@ -14,9 +14,12 @@ def GroupByOrderId():
     print(selecteddf.columns)
     #Group by fields (show in report)
     gpdf = selecteddf.groupby(['CustomerInfo','StockCode','BuySell'])
+    #Aggregate by sum and count
     agggpdf = gpdf.agg({'TradePrice':'count','TradeSize':'sum','Consideration':'sum'})    
+    #Rename
     sumgpdf = agggpdf.rename(columns={'TradePrice':'TradeCount'})
     print(sumgpdf.columns)
+    #Add new field AvgPX
     sumgpdf['AvgPx'] = sumgpdf['Consideration'] / sumgpdf['TradeSize']
     print(sumgpdf.columns)
     print("Write to csv")
