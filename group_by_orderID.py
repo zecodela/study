@@ -2,13 +2,6 @@
 import sys
 import pandas as pd 
 
-def GroupByOrderID():
-	print("GroupByOrderID")
-	df = pd.read_csv("trade_file.csv")
-	print(df.info())
-	grouped = df.groupby(['orderID'])	
-	print(grouped.sum())
-	return
 
 def GroupByOrderId():
     print("GroupByOrderId")
@@ -17,26 +10,21 @@ def GroupByOrderId():
     #Select relevant columns
     selecteddf = df.loc[:,['CustomerInfo','StockCode','BuySell','AccountID','TradePrice','TradeSize']]
     #Add Consideration field
-    selecteddf['Consideration'] = selecteddf['TradeSize'] * df['TradePrice']
-    print(df.columns)
+    selecteddf['Consideration'] = selecteddf['TradeSize'] * selecteddf['TradePrice']
+    print(selecteddf.columns)
     #Group by fields (show in report)
     gpdf = selecteddf.groupby(['CustomerInfo','StockCode','BuySell'])
-    #gpdf['AvgPx'] = gpdf['Consideration'] * gpdf['TradeSize']
-    gpdf.sum().to_csv('GroupbyOrderId.csv')
+    agggpdf = gpdf.agg({'TradePrice':'count','TradeSize':'sum','Consideration':'sum'})    
+    sumgpdf = agggpdf.rename(columns={'TradePrice':'TradeCount'})
+    print(sumgpdf.columns)
+    sumgpdf['AvgPx'] = sumgpdf['Consideration'] / sumgpdf['TradeSize']
+    print(sumgpdf.columns)
+    print("Write to csv")
+    sumgpdf.to_csv('GroupbyOrderId.csv',sep='\t')
     return
 
 
-def GroupByOrderID2():
-	print("GroupByOrderID2")
-	ipl_data = {'orderID': ['a001','a001','a001','a002','a002'],
-				'tradePx': ['100.1','100.15','100.2','20.0','20.1'],
-				'tradeVol': ['10000','1000','100','2000','3000'],
-				"symbol": ['1.hk','1.hk','1.hk','2.hk','2.hk'],
-				"side": ['b','b','b','s','s']}
-	df = pd.DataFrame(ipl_data)
-	print (df)
-	print (df.groupby(['orderID','symbol','side']).groups)
-	return
+
 
 def run():
 	GroupByOrderId()
