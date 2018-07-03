@@ -23,7 +23,7 @@ def GroupByOrderId():
     sumgpdf['AvgPx'] = sumgpdf['Consideration'] / sumgpdf['TradeSize']
     print(sumgpdf.columns)
     print("Write to csv")
-    sumgpdf.to_csv('GroupbyOrderId.csv',sep='\t')
+    sumgpdf.to_csv('20180626_GroupbyOrderId.csv',sep=',')
     return
 
 
