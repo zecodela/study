@@ -1,7 +1,7 @@
 
 import sys
 import pandas as pd 
-
+import re
 
 def GroupByOrderId(inputfile):
     #print("GroupByOrderId")
@@ -29,14 +29,28 @@ def GroupByOrderId(inputfile):
     return
 
 
+def Find(pat, text):
+	results = re.findall(pat, text)
+	for result in results:
+		print (result)
+	#for i, val in enumerate(strlist):
+	#    print i, val
+
+def Split(pat, text):
+	print(re.split(pat, text))
 
 
 def run():
-    inputfile = sys.argv[1]
-    if inputfile != "":
-        print("Source file: " + inputfile)
-        GroupByOrderId(inputfile)
-    else:
-        print("No input file provided.")
+	#Find("data=.*", "name=\"jim lo\" data=cat")
+	file = open("output.txt", "r")
+	txt = file.readline()
+	txt.decode('utf8')
+	Find("(title=\")(.*)(\"|\s)", txt)
+
+	#encoded = '\xe4\xbb\x8a\xe5\xa4\xa9\xe5\xa4\xa9\xe6\xb0\xa3\xe7\x9c\x9f\xe5\xa5\xbd'
+	#msg = encoded.decode('utf8')
+	#print msg
+
+	
 if __name__ == '__main__':
 	run()
