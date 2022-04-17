@@ -7,8 +7,8 @@ https://tastemade-gb.samsung.wurl.com/manifest/playlist.m3u8
 https://rthklive2-lh.akamaihd.net/i/rthk32_1@168450/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-country="HK" tvg-language="" tvg-logo="" group-title="General",香港開電視 (720p)
 http://media.fantv.hk/m3u8/archive/channel2.m3u8
-#EXTINF:-1 tvg-id="NHKGTokyo.jp" tvg-country="JP" tvg-language="Japanese" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6f/NHK%E7%B7%8F%E5%90%88%E3%83%AD%E3%82%B42020-.png" group-title="General",NHK G Tokyo (720p) [Not 24/7]
-http://51.79.193.108:8080/hls/j00033/index.m3u8?type=jp
+#EXTINF:-1 tvg-id="NHKGeneralTV.jp" tvg-country="JP" tvg-language="Japanese" tvg-logo="https://tvguide.myjcom.jp/monomedia/ch_logo/otd/logo-7FE0-011-400x400.png" group-title="General",NHK General TV (540p) [Not 24/7]
+https://nhk2.mov3.co/hls/nhk.m3u8
 #EXTINF:-1 tvg-id="FujiTV.jp" tvg-country="JP" tvg-language="Japanese" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/2c/FTV8.png" group-title="General",Fuji TV (540p) [Not 24/7]
 https://fujitv2.mov3.co/hls/fujitv.m3u8
 #EXTINF:-1 tvg-id="JORXDTV.jp" tvg-country="JP" tvg-language="Japanese" tvg-logo="https://tvguide.myjcom.jp/monomedia/ch_logo/otd/logo-7FE3-061-400x400.png" group-title="Undefined",TBS (540p) [Not 24/7]
